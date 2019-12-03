@@ -22,3 +22,24 @@
     position: absolute;
     top: 6em;
 }
+
+#tooltip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+    background: lightsteelblue;
+    box-shadow: 1px 1px 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    color: black;
+    opacity: 0;
+}
+
+.bar:hover {
+    fill: white;
+}
