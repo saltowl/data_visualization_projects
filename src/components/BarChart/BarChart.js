@@ -41,7 +41,7 @@ class BarChart extends React.Component {
                     rawDates: data.data.map(d => d[0]),
                     dates: data.data.map(d => new Date(d[0])),
                     GDP,
-                    barWidth: this.props.width / GDP.length
+                    barWidth: this.props.width / GDP.length,
                 });
 
                 this.updateChart();
@@ -61,7 +61,7 @@ class BarChart extends React.Component {
 
         const scaledGDP = GDP.map(item => this.state.linearScale(item));
 
-        const bars = d3.select(this.viz)
+        d3.select(this.viz)
             .selectAll('.bar')
             .data(scaledGDP)
             .transition().duration(this.props.animDuration)
@@ -72,11 +72,11 @@ class BarChart extends React.Component {
             .attr('data-date', (d, i) => rawDates[i])
             .attr('data-gdp', (d, i) => GDP[i]);
 
-        const xAxisGroup = d3.select(this.viz)
+        d3.select(this.viz)
             .select('#x-axis')
             .call(d3.axisBottom().scale(this.state.xScale));
 
-        const yAxisGroup = d3.select(this.viz)
+        d3.select(this.viz)
             .select('#y-axis')
             .call(d3.axisLeft(this.state.yScale));
 
@@ -105,8 +105,9 @@ class BarChart extends React.Component {
         const bar = d3.select(e.target);
         const gdp = parseFloat(bar.attr('data-gdp'));
         const date = bar.attr('data-date');
-        const left = e.target.x.baseVal.value;
-        const top = this.props.height - this.props.margin;
+        const bounds = this.viz.getBoundingClientRect();
+        const left = bounds.x + e.target.x.baseVal.value;
+        const top = bounds.y + bounds.height - 2 * this.props.margin;
 
         tooltip.transition()
             .duration(200)
@@ -114,9 +115,8 @@ class BarChart extends React.Component {
 
         tooltip.html(`${ date } <br> $ ${ gdp.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') } Billion`)
             .attr('data-date', date)
-            .style('left', `${ left }px`)
-            .style('top', `${ top }px`)
-            .style('transform', 'translateX(10px)');
+            .style('left', `${ left + 10 }px`)
+            .style('top', `${ top }px`);
     }
 
     handleMouseOutBar(e) {
@@ -141,10 +141,18 @@ class BarChart extends React.Component {
                 <div className='container'>
                     { error 
                     ? <Error message={ error.message } /> 
-                    : <div className='viz'>
+                    : <div className='graph'>
                         <div id='title'>United States GDP</div>
                             <div id='tooltip' />
                             <svg ref={ viz => (this.viz = viz) } width={ width + 100 } height={ height + margin }>
+                                <text transform={ 'rotate(-90)' } x={ -200 } y={ 80 }>
+                                    Gross Domestic Product
+                                </text>
+                                <text x={ width - margin - 20 } y={ height + 50 }>
+                                    <a href='http://www.bea.gov/national/pdf/nipaguid.pdf' target='_blank' rel="noopener noreferrer">
+                                        More Information...
+                                    </a>
+                                </text>
                                 <g id='x-axis' transform={ `translate(${margin}, ${height})` } />
                                 <g id='y-axis' transform={ `translate(${margin}, 0)` } />
                                 { bars }
