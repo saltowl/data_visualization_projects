@@ -28,3 +28,7 @@ body {
     font-size: 2.5em;
     margin: 20px;
 }
+
+.legend > text {
+    text-anchor: end;
+}

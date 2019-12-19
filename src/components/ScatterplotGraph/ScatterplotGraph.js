@@ -10,12 +10,14 @@ class ScatterplotGraph extends React.Component {
         this.state = {
             err: null,
             data: null,
-            dotRadius: 6
+            dotRadius: 6,
+            legendSide: 18
         };
 
         this.getData = this.getData.bind(this);
         this.updateChart = this.updateChart.bind(this);
         this.updateScales = this.updateScales.bind(this);
+        this.updateLegend = this.updateLegend.bind(this);
         this.handleMouseOutDot = this.handleMouseOutDot.bind(this);
         this.handleMouseOverDot = this.handleMouseOverDot.bind(this);
 
@@ -47,7 +49,7 @@ class ScatterplotGraph extends React.Component {
 
         this.updateScales();
 
-        const { data, xScale, yScale } = this.state;
+        const { data, xScale, yScale, color, dotRadius } = this.state;
         const { margin, cor } = this.props;
 
         d3.select(this.viz)
@@ -65,15 +67,17 @@ class ScatterplotGraph extends React.Component {
             .transition().duration(this.props.animDuration)
             .attr('cx', d => xScale(d.Year) + margin)
             .attr('cy', d => yScale(d.Time) + cor)
-            .attr('r', 6)
+            .attr('r', dotRadius)
             .attr('data-xvalue', d => d.Year)
-            .attr('data-yvalue', d => d.Time.toISOString());
+            .attr('data-yvalue', d => d.Time.toISOString())
+            .style('fill', d => color(d.Doping !== ''));
 
+        this.updateLegend();
     }
 
     updateScales() {
         const { data } = this.state;
-        const { width, height, margin } = this.props;
+        const { width, height } = this.props;
 
         const xScale = d3.scaleLinear()
             .domain([d3.min(data, d => d.Year - 1),
@@ -84,7 +88,24 @@ class ScatterplotGraph extends React.Component {
             .domain(d3.extent(data, d => d.Time))
             .range([0, height]);
 
-        this.setState({ xScale, yScale });
+        const color = d3.scaleOrdinal(d3.schemeDark2);
+
+        this.setState({ xScale, yScale, color });
+    }
+
+    updateLegend() {
+        const { color } = this.state;
+
+        const legend = d3.selectAll('.legend')
+            .data(color.domain());
+        
+        legend
+            .select('rect')
+            .style('fill', color);
+
+        legend
+            .select('text')
+            .text(d => d ? 'Riders with doping allegations' : 'No doping allegations');
     }
 
     componentDidMount() {
@@ -100,7 +121,7 @@ class ScatterplotGraph extends React.Component {
     }
 
     render() {
-        const { err, data, dotRadius } = this.state;
+        const { err, data, dotRadius, legendSide } = this.state;
         const { width, height, margin, cor } = this.props;
 
         const dots = data 
@@ -108,6 +129,12 @@ class ScatterplotGraph extends React.Component {
                 onMouseOver={ this.handleMouseOverBar } onMouseOut={ this.handleMouseOutBar } 
                 cy={ height } cx={ margin } r={ dotRadius } />)) 
             : [];
+        
+        const legend = [0, 1].map((d, i) => 
+                (<g className='legend' key={`legend${i}`} transform={ `translate(0, ${ height / 2 - i * 20 } )`}>
+                    <text x={ width + margin - legendSide * 1.5 } y={ legendSide / 2 } dy={'.35em'} />
+                    <rect x={ width + margin - legendSide } width={ legendSide } height={ legendSide } />
+                </g>));
 
         return (
             <div className='main'>
@@ -120,6 +147,9 @@ class ScatterplotGraph extends React.Component {
                         <svg ref={ viz => (this.viz = viz) } width={ width + margin * 2 } height={ height + margin + cor }>
                             <g id='x-axis' transform={ `translate(${ margin }, ${ height + cor })` } />
                             <g id='y-axis' transform={ `translate(${ margin }, ${ cor })` } />
+                            <g id='legend'>
+                                { legend }
+                            </g>
                             { dots }
                         </svg>
                         </div>}
