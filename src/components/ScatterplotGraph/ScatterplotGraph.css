@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #9A8F86;
+}
+
+.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main .container{
+    height: 600px;
+    width: 950px;
+    box-shadow: 1px 1px 10px;
+    background: #C8BDB4;
+}
+
+.graph {
+    margin: 20px;
+}
+
+#title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px;
+}
