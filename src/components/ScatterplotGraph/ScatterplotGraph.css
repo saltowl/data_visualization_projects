@@ -4,7 +4,7 @@ body {
     background: #9A8F86;
 }
 
-.main {
+.scatterplot.main {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -12,23 +12,37 @@ body {
     justify-content: center;
 }
 
-.main .container{
+.scatterplot .container{
     height: 600px;
     width: 950px;
     box-shadow: 1px 1px 10px;
     background: #C8BDB4;
 }
 
-.graph {
+.scatterplot .graph {
     margin: 20px;
 }
 
-#title {
+.scatterplot #title {
     text-align: center;
     font-size: 2.5em;
     margin: 20px;
 }
 
-.legend > text {
+.scatterplot .legend > text {
     text-anchor: end;
+}
+
+.scatterplot #tooltip {
+    position: absolute;
+    text-align: left;
+    height: 70px;
+    padding: 4px;
+    background: #95A494;
+    box-shadow: 1px 1px 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    color: #141923;
+    opacity: 0;
+    font-size: 12px;
 }

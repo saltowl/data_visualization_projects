@@ -70,6 +70,9 @@ class ScatterplotGraph extends React.Component {
             .attr('r', dotRadius)
             .attr('data-xvalue', d => d.Year)
             .attr('data-yvalue', d => d.Time.toISOString())
+            .attr('data-name', d => d.Name)
+            .attr('data-doping', d => d.Doping)
+            .attr('data-country', d => d.Nationality)
             .style('fill', d => color(d.Doping !== ''));
 
         this.updateLegend();
@@ -112,12 +115,35 @@ class ScatterplotGraph extends React.Component {
         this.updateChart();
     }
 
-    handleMouseOutDot() {
+    handleMouseOverDot(e) {
+        const tooltip = d3.select('#tooltip');
+        const dot = d3.select(e.target);
 
+        const bounds = this.viz.getBoundingClientRect();
+        const left = bounds.x + e.target.cx.baseVal.value;
+        const top = bounds.y + e.target.cy.baseVal.value;
+
+        const name = dot.attr('data-name');
+        const doping = dot.attr('data-doping');
+        const year = dot.attr('data-xvalue');
+        const time = d3.timeFormat('%M:%S')(new Date(dot.attr('data-yvalue')));
+        const country = dot.attr('data-country');
+
+        tooltip.transition()
+            .duration(200)
+            .style('opacity', 1);
+
+        tooltip.html(`${ name }: ${ country } <br> Year: ${ year }, Time: ${ time } <br> <br> ${ doping }`)
+            .attr('data-year', year)
+            .style('left', `${ left }px`)
+            .style('top', `${ top }px`);
     }
 
-    handleMouseOverDot() {
-
+    handleMouseOutDot(e) {
+        d3.select('#tooltip')
+            .transition()
+            .duration(200)
+            .style('opacity', 0);
     }
 
     render() {
@@ -126,7 +152,7 @@ class ScatterplotGraph extends React.Component {
 
         const dots = data 
             ? data.map((d, i) => (<circle key={`circle${i}`}  className='dot'
-                onMouseOver={ this.handleMouseOverBar } onMouseOut={ this.handleMouseOutBar } 
+                onMouseOver={ this.handleMouseOverDot } onMouseOut={ this.handleMouseOutDot } 
                 cy={ height } cx={ margin } r={ dotRadius } />)) 
             : [];
         
@@ -137,7 +163,7 @@ class ScatterplotGraph extends React.Component {
                 </g>));
 
         return (
-            <div className='main'>
+            <div className='main scatterplot'>
                 <div className='container'>
                     { err 
                     ? <Error message={err.message} />
