@@ -4,7 +4,7 @@ body {
     background: #9A8F86;
 }
 
-.main {
+.bar-chart.main {
     height: 100vh;
     width: 100vw;
     display: flex;
@@ -12,23 +12,23 @@ body {
     justify-content: center;
 }
 
-.main .container{
+.bar-chart .container{
     height: 560px;
     width: 900px;
     box-shadow: 1px 1px 10px;
     background: #C8BDB4;
 }
 
-.graph {
+.bar-chart .graph {
     margin: 20px;
 }
 
-#title {
+.bar-chart #title {
     text-align: center;
     font-size: 2.5em
 }
 
-#tooltip {
+.bar-chart #tooltip {
     position: absolute;
     text-align: center;
     width: 150px;
@@ -42,14 +42,14 @@ body {
     opacity: 0;
 }
 
-.bar {
+.bar-chart .bar {
     fill: #342E2A;
 }
 
-.bar:hover {
+.bar-chart .bar:hover {
     fill: #4D5A4C;
 }
 
-a:hover {
+.bar-chart a:hover {
     font-weight: bold;
 }

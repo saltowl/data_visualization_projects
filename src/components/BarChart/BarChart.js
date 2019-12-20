@@ -8,10 +8,6 @@ class BarChart extends React.Component {
         super(props);
 
         this.state = {
-            linearScale: null,
-            xScale: null,
-            yScale: null,
-            dates: null,
             GDP: null,
             error: null
         };
@@ -137,7 +133,7 @@ class BarChart extends React.Component {
             : [];
 
         return (
-            <div className='main'>
+            <div className='main bar-chart'>
                 <div className='container'>
                     { error 
                     ? <Error message={ error.message } /> 
@@ -149,7 +145,7 @@ class BarChart extends React.Component {
                                     Gross Domestic Product
                                 </text>
                                 <text x={ width - margin - 20 } y={ height + 50 }>
-                                    <a href='http://www.bea.gov/national/pdf/nipaguid.pdf' target='_blank' rel="noopener noreferrer">
+                                    <a href='http://www.bea.gov/national/pdf/nipaguid.pdf' target='_blank' rel='noopener noreferrer'>
                                         More Information...
                                     </a>
                                 </text>
