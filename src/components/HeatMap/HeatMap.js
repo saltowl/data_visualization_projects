@@ -11,6 +11,8 @@ class HeatMap extends React.Component {
         this.updateChart = this.updateChart.bind(this);
         this.updateScales = this.updateScales.bind(this);
         this.updateLegend = this.updateLegend.bind(this);
+        this.handleMouseOverCell = this.handleMouseOverCell.bind(this);
+        this.handleMouseOutCell = this.handleMouseOutCell.bind(this);
 
         this.state = {
             err: null,
@@ -140,12 +142,50 @@ class HeatMap extends React.Component {
         this.updateChart();
     }
 
+    handleMouseOverCell(e) {
+        const tooltip = d3.select('#tooltip');
+        const cell = d3.select(e.target);
+
+        const bounds = this.viz.getBoundingClientRect();
+        const left = bounds.x + e.target.x.baseVal.value + this.props.margin;
+        const top = bounds.y + e.target.y.baseVal.value - e.target.height.baseVal.value * 1.5;
+
+        const year = cell.attr('data-year');
+        const month = d3.timeFormat('%B')(new Date(year, cell.attr('data-month')));
+        const temp = parseFloat(cell.attr('data-temp')).toFixed(1);
+
+        cell.transition()
+            .duration(10)
+            .style('fill-opacity', 0.2);
+        
+        tooltip.transition()
+            .duration(200)
+            .style('opacity', 1);
+
+        tooltip.html(`${ year } - ${ month } <br> ${ temp } ${ this.props.mes }`)
+            .attr('data-year', year)
+            .style('left', `${ left }px`)
+            .style('top', `${ top }px`);
+    }
+
+    handleMouseOutCell(e) {
+        d3.select(e.target)
+            .transition()
+            .duration(500)
+            .style('fill-opacity', 1);
+       
+        d3.select('#tooltip')
+            .transition()
+            .duration(200)
+            .style('opacity', 0);
+    }
+
     render() {
         const { err, data, description } = this.state;
         const { width, height, margin, legendHeight, legendWidth } = this.props;
 
         const cells = data
-        ? data.map((d, i) => (<rect className='cell' key={`rect${i}`} />))
+        ? data.map((d, i) => (<rect className='cell' key={`rect${i}`} onMouseOver={ this.handleMouseOverCell } onMouseOut={ this.handleMouseOutCell }/>))
         : [];
 
         const legendGradient = 'gradient';
@@ -158,6 +198,7 @@ class HeatMap extends React.Component {
                     : <div className='graph'>
                         <div id='title'>Monthly Global Land-Surface Temperature</div>
                         <div id='description'>{ description }</div>
+                        <div id='tooltip' />
                         <svg id='svg-graph' ref={ viz => (this.viz = viz) } width={ width + margin } height={ height + margin + margin / 2 } >
                             <defs>
                                 <linearGradient id={legendGradient} />
