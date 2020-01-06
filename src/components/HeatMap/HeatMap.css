@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #9A8F86;
+}
+
+.heatmap #svg-graph{
+    font-weight: 400;
+    color: black;
+    font-size: 16px;
+}
+
+.heatmap.main {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heatmap .container{
+    height: 700px;
+    width: 1400px;
+    box-shadow: 1px 1px 10px;
+    background: #B5BDA2;
+}
+
+.heatmap .graph {
+    margin: 20px;
+}
+
+.heatmap #title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+.heatmap #description {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.heatmap
+#x-axis .domain,
+#y-axis .domain,
+#legend-axis .domain {
+    stroke-width: 0;
+}
+
+.heatmap
+.label {
+    font-size: 16px;
+    font-weight: 400;
+    fill: black;
+}

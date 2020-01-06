@@ -9,6 +9,7 @@ import {
 
 import BarChart from '../BarChart/BarChart';
 import ScatterplotGraph from '../ScatterplotGraph/ScatterplotGraph';
+import HeatMap from '../HeatMap/HeatMap';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Switch>
           <Route path="/bar-chart" component={BarChart} />
           <Route path="/scatterplot-graph" component={ScatterplotGraph} />
+          <Route path="/heat-map" component={HeatMap} />
         </Switch>
       </Router>
     </div>
