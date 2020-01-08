@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #9A8F86;
+}
+
+.treemap.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.treemap .container{
+    height: 1200px;
+    width: 1050px;
+    box-shadow: 1px 1px 10px;
+    background: #fff;
+}
+
+.treemap .graph {
+    margin: 20px;
+}
+
+.treemap #title {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px;
+}
+
+.treemap #description {
+    text-align: center;
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+.treemap .tile-text {
+    font-size: 10px;
+}
+
+.treemap #legend{
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    margin: auto;
+    padding-bottom: 5px;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+}
