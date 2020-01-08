@@ -18,6 +18,8 @@ class ChoroplethMap extends React.Component {
         this.updateChart = this.updateChart.bind(this);
         this.updateLegend = this.updateLegend.bind(this);
         this.updateScales = this.updateScales.bind(this);
+        this.handleMouseOverCounty = this.handleMouseOverCounty.bind(this);
+        this.handleMouseOutCounty = this.handleMouseOutCounty.bind(this);
 
         this.getData();
     }
@@ -123,12 +125,52 @@ class ChoroplethMap extends React.Component {
         this.updateChart();
     }
 
+    handleMouseOverCounty(e) {
+        const { education } = this.state;
+
+        const tooltip = d3.select('#tooltip');
+        const county = d3.select(e.target);
+
+        const left = e.pageX;
+        const top = e.pageY;
+
+        county.transition()
+            .duration(10)
+            .style('fill-opacity', 0.2);
+        
+        tooltip.transition()
+            .duration(200)
+            .style('opacity', 0.9);
+
+        const countyId = e.target.__data__.id;
+        const percent = county.attr('data-education');
+        const state = education.filter(obj => obj.fips === countyId)[0].state;
+        const area = education.filter(obj => obj.fips === countyId)[0].area_name;
+
+        tooltip.html(`${ area }, ${ state }: ${ percent }%`)
+            .style('left', `${ left }px`)
+            .style('top', `${ top }px`)
+            .attr('data-education', percent);
+    }
+
+    handleMouseOutCounty(e) {
+        d3.select(e.target)
+            .transition()
+            .duration(300)
+            .style('fill-opacity', 1);
+       
+        d3.select('#tooltip')
+            .transition()
+            .duration(200)
+            .style('opacity', 0);
+    }
+
     render() {
         const { err } = this.state;
         const { width, height, margin, legendHeight, legendWidth } = this.props;
 
         const counties = this.state.counties
-        ? this.state.counties.objects.counties.geometries.map((d, i) => (<path className='county' key={`county${i}`} />))
+        ? this.state.counties.objects.counties.geometries.map((d, i) => (<path className='county' key={`county${i}`} onMouseOver={ this.handleMouseOverCounty } onMouseOut={ this.handleMouseOutCounty } />))
         : [];
 
         const legendGradient = 'gradient';
@@ -141,6 +183,7 @@ class ChoroplethMap extends React.Component {
                     : <div className='graph'>
                         <div id='title'>United States Educational Attainment</div>
                         <div id='description'>Percentage of adults age 25 and older with a bachelor's degree or higher (2010-2014)</div>
+                        <div id='tooltip' />
                         <svg ref={ viz => (this.viz = viz)} width={ width + margin } height={ height }>
                             <defs>
                                 <linearGradient id={legendGradient} />

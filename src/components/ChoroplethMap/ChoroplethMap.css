@@ -44,3 +44,17 @@ body {
     stroke: #fff;
     stroke-width: 1;
 }
+
+.choroplethmap #tooltip {
+    position: absolute;
+    text-align: center;
+    height: 40px;
+    padding: 4px;
+    background: #9A8F86;
+    box-shadow: 1px 1px 10px;
+    border-radius: 2px;
+    pointer-events: none;
+    color: #141923;
+    opacity: 0;
+    font-size: 16px;
+}
