@@ -103,6 +103,7 @@ class TreeMap extends React.Component {
         d3.select(this.viz)
             .selectAll('.cell')
             .data(root.leaves())
+            .transition().duration(this.props.animDuration)
             .attr('transform', d => `translate(${d.x0}, ${d.y0})`);
         
         // tiles
@@ -149,6 +150,7 @@ class TreeMap extends React.Component {
         d3.select('#legend')
             .selectAll('.legend-text')
             .data(categories)
+            .transition().duration(this.props.animDuration)
             .attr('x', legendRectSize * 1.5)
             .attr('y', legendRectSize * 2 / 3)
             .text(d => d);
@@ -164,7 +166,7 @@ class TreeMap extends React.Component {
 
         const cells = root
         ? root.leaves().map((d, i) => 
-            (<g className='cell' key={`cell${i}`} >
+            (<g className='cell' key={`cell${i}`} x={ 0 } y={ 0 } >
                 <rect className='tile' />
                 <text className='tile-text' />
             </g>))
