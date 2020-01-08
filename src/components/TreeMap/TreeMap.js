@@ -53,6 +53,8 @@ class TreeMap extends React.Component {
         this.updateChart = this.updateChart.bind(this);
         this.updateScales = this.updateScales.bind(this);
         this.updateLegend = this.updateLegend.bind(this);
+        this.handleMouseOverCell = this.handleMouseOverCell.bind(this);
+        this.handleMouseOutCell = this.handleMouseOutCell.bind(this);
 
         this.getData();
     }
@@ -160,6 +162,46 @@ class TreeMap extends React.Component {
         this.updateChart();
     }
 
+    handleMouseOverCell(e) {
+        const tooltip = d3.select('#tooltip');
+        const cell = d3.select(e.target);
+
+        const left = e.pageX;
+        const top = e.pageY;
+
+        const name = cell.attr('data-name');
+        const category = cell.attr('data-category');
+        const value = cell.attr('data-value');
+        const boxOffice = value.replace(/(?=\B(?:\d{3})+(?!\d))/g, ' ');
+
+        cell.transition()
+            .duration(10)
+            .style('fill-opacity', 0.2);
+        
+        tooltip.transition()
+            .duration(200)
+            .style('opacity', 0.95);
+
+        tooltip.html(`<mark>Name:</mark> <b>${ name }</b> <br>
+            <mark>Category:</mark> <b>${ category }</b> <br>
+            <mark>Value:</mark> <b>$ ${ boxOffice }</b>`)
+            .style('left', `${ left }px`)
+            .style('top', `${ top }px`)
+            .attr('data-value', value);
+    }
+
+    handleMouseOutCell(e) {
+        d3.select(e.target)
+            .transition()
+            .duration(500)
+            .style('fill-opacity', 1);
+   
+        d3.select('#tooltip')
+            .transition()
+            .duration(200)
+            .style('opacity', 0);
+    }
+
     render() {
         const { width, height, legendWidth, legendHeight, margin, legendRectSize, legendLabelWidth, legendLabelHeight } = this.props;
         const { err, root, categories } = this.state;
@@ -167,7 +209,7 @@ class TreeMap extends React.Component {
         const cells = root
         ? root.leaves().map((d, i) => 
             (<g className='cell' key={`cell${i}`} x={ 0 } y={ 0 } >
-                <rect className='tile' />
+                <rect className='tile' onMouseOver={ this.handleMouseOverCell } onMouseOut={ this.handleMouseOutCell }/>
                 <text className='tile-text' />
             </g>))
         : [];
@@ -199,6 +241,7 @@ class TreeMap extends React.Component {
                                 { legend }
                             </g>
                         </svg>
+                        <div id='tooltip' />
                     </div>}
                 </div>
             </div>
