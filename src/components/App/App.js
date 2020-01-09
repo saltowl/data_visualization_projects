@@ -1,18 +1,12 @@
 import React from 'react';
 import './App.css';
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import BarChart from '../BarChart/BarChart';
 import ScatterplotGraph from '../ScatterplotGraph/ScatterplotGraph';
 import HeatMap from '../HeatMap/HeatMap';
 import ChoroplethMap from '../ChoroplethMap/ChoroplethMap';
 import TreeMap from '../TreeMap/TreeMap';
-
 
 function App() {
   return (

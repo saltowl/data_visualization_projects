@@ -1,55 +1,55 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #9A8F86;
+  margin: 0;
+  padding: 0;
+  background: #9a8f86;
 }
 
 .bar-chart.main {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.bar-chart .container{
-    height: 560px;
-    width: 900px;
-    box-shadow: 1px 1px 10px;
-    background: #C8BDB4;
+.bar-chart .container {
+  height: 560px;
+  width: 900px;
+  box-shadow: 1px 1px 10px;
+  background: #c8bdb4;
 }
 
 .bar-chart .graph {
-    margin: 20px;
+  margin: 20px;
 }
 
 .bar-chart #title {
-    text-align: center;
-    font-size: 2.5em
+  text-align: center;
+  font-size: 2.5em;
 }
 
 .bar-chart #tooltip {
-    position: absolute;
-    text-align: center;
-    width: 150px;
-    height: 50px;
-    padding: 2px;
-    background: #95A494;
-    box-shadow: 1px 1px 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    color: #141923;
-    opacity: 0;
+  position: absolute;
+  text-align: center;
+  width: 150px;
+  height: 50px;
+  padding: 2px;
+  background: #95a494;
+  box-shadow: 1px 1px 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  color: #141923;
+  opacity: 0;
 }
 
 .bar-chart .bar {
-    fill: #342E2A;
+  fill: #342e2a;
 }
 
 .bar-chart .bar:hover {
-    fill: #4D5A4C;
+  fill: #4d5a4c;
 }
 
 .bar-chart a:hover {
-    font-weight: bold;
+  font-weight: bold;
 }

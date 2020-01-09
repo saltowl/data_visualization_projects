@@ -1,72 +1,72 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #9A8F86;
+  margin: 0;
+  padding: 0;
+  background: #9a8f86;
 }
 
 .treemap.main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
-.treemap .container{
-    height: 1200px;
-    width: 1050px;
-    box-shadow: 1px 1px 10px;
-    background: #fff;
+.treemap .container {
+  height: 1200px;
+  width: 1050px;
+  box-shadow: 1px 1px 10px;
+  background: #fff;
 }
 
 .treemap .graph {
-    margin: 20px;
+  margin: 20px;
 }
 
 .treemap #title {
-    text-align: center;
-    font-size: 2.5em;
-    margin: 20px;
+  text-align: center;
+  font-size: 2.5em;
+  margin: 20px;
 }
 
 .treemap #description {
-    text-align: center;
-    font-size: 1.5em;
-    margin: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 10px;
 }
 
 .treemap .tile-text {
-    font-size: 10px;
+  font-size: 10px;
 }
 
-.treemap #legend{
-    font-size: 15px;
-    text-align: center;
-    display: block;
-    margin: auto;
-    padding-bottom: 5px;
-    margin-bottom: 2rem;
-    margin-top: 1rem;
+.treemap #legend {
+  font-size: 15px;
+  text-align: center;
+  display: block;
+  margin: auto;
+  padding-bottom: 5px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
 
 .treemap #tooltip {
-    position: absolute;
-    text-align: left;
-    height: 70px;
-    padding: 4px;
-    background: #9A8F86;
-    box-shadow: 1px 1px 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    color: #141923;
-    opacity: 0;
-    font-size: 14px;
+  position: absolute;
+  text-align: left;
+  height: 70px;
+  padding: 4px;
+  background: #9a8f86;
+  box-shadow: 1px 1px 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  color: #141923;
+  opacity: 0;
+  font-size: 14px;
 }
 
-.treemap b{
-    font-weight: 600;
+.treemap b {
+  font-weight: 600;
 }
 
-.treemap mark{
-    background: #9A8F86;
-    text-decoration: underline;
+.treemap mark {
+  background: #9a8f86;
+  text-decoration: underline;
 }

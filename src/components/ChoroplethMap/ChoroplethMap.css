@@ -1,60 +1,59 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #9A8F86;
+  margin: 0;
+  padding: 0;
+  background: #9a8f86;
 }
 
 .choroplethmap.main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
 }
 
-.choroplethmap .container{
-    height: 750px;
-    width: 1200px;
-    box-shadow: 1px 1px 10px;
-    background: #fff;
+.choroplethmap .container {
+  height: 750px;
+  width: 1200px;
+  box-shadow: 1px 1px 10px;
+  background: #fff;
 }
 
 .choroplethmap .graph {
-    margin: 20px;
+  margin: 20px;
 }
 
 .choroplethmap #title {
-    text-align: center;
-    font-size: 3em;
-    margin: 15px;
+  text-align: center;
+  font-size: 3em;
+  margin: 15px;
 }
 
 .choroplethmap #description {
-    text-align: center;
-    font-size: 1.2em;
-    margin: 5px;
+  text-align: center;
+  font-size: 1.2em;
+  margin: 5px;
 }
 
-.choroplethmap
-#legend-axis .domain {
-    stroke-width: 0;
+.choroplethmap #legend-axis .domain {
+  stroke-width: 0;
 }
 
 .choroplethmap #states {
-    fill: none;
-    stroke: #fff;
-    stroke-width: 1;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 1;
 }
 
 .choroplethmap #tooltip {
-    position: absolute;
-    text-align: center;
-    height: 40px;
-    padding: 4px;
-    background: #9A8F86;
-    box-shadow: 1px 1px 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    color: #141923;
-    opacity: 0;
-    font-size: 16px;
+  position: absolute;
+  text-align: center;
+  height: 40px;
+  padding: 4px;
+  background: #9a8f86;
+  box-shadow: 1px 1px 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  color: #141923;
+  opacity: 0;
+  font-size: 16px;
 }

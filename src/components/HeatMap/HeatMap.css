@@ -1,69 +1,67 @@
 body {
-    margin: 0;
-    padding: 0;
-    background: #9A8F86;
+  margin: 0;
+  padding: 0;
+  background: #9a8f86;
 }
 
 .heatmap.main {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.heatmap .container{
-    height: 700px;
-    width: 1400px;
-    box-shadow: 1px 1px 10px;
-    background: #B5BDA2;
+.heatmap .container {
+  height: 700px;
+  width: 1400px;
+  box-shadow: 1px 1px 10px;
+  background: #b5bda2;
 }
 
 .heatmap .graph {
-    margin: 20px;
+  margin: 20px;
 }
 
 .heatmap #title {
-    text-align: center;
-    font-size: 2.5em;
-    margin: 20px;
+  text-align: center;
+  font-size: 2.5em;
+  margin: 20px;
 }
 
 .heatmap #description {
-    text-align: center;
-    font-size: 1.5em;
-    margin: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 10px;
 }
 
-.heatmap
-#x-axis .domain,
+.heatmap #x-axis .domain,
 #y-axis .domain,
 #legend-axis .domain {
-    stroke-width: 0;
+  stroke-width: 0;
 }
 
-.heatmap
-.label {
-    font-size: 16px;
-    font-weight: 400;
-    fill: black;
+.heatmap .label {
+  font-size: 16px;
+  font-weight: 400;
+  fill: black;
 }
 
 .heatmap .cell:hover {
-    stroke-width: 1;
-    stroke: black;
+  stroke-width: 1;
+  stroke: black;
 }
 
 .heatmap #tooltip {
-    position: absolute;
-    text-align: center;
-    height: 40px;
-    padding: 4px;
-    background: #9A8F86;
-    box-shadow: 1px 1px 10px;
-    border-radius: 2px;
-    pointer-events: none;
-    color: #141923;
-    opacity: 0;
-    font-size: 16px;
+  position: absolute;
+  text-align: center;
+  height: 40px;
+  padding: 4px;
+  background: #9a8f86;
+  box-shadow: 1px 1px 10px;
+  border-radius: 2px;
+  pointer-events: none;
+  color: #141923;
+  opacity: 0;
+  font-size: 16px;
 }
