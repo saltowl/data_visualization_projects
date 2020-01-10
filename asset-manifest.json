@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/data_visualization_projects/static/css/main.97388c04.chunk.css",
-    "main.js": "/data_visualization_projects/static/js/main.ab3382e4.chunk.js",
-    "main.js.map": "/data_visualization_projects/static/js/main.ab3382e4.chunk.js.map",
+    "main.css": "/data_visualization_projects/static/css/main.8968565f.chunk.css",
+    "main.js": "/data_visualization_projects/static/js/main.be439a93.chunk.js",
+    "main.js.map": "/data_visualization_projects/static/js/main.be439a93.chunk.js.map",
     "runtime~main.js": "/data_visualization_projects/static/js/runtime~main.ba3a02e7.js",
     "runtime~main.js.map": "/data_visualization_projects/static/js/runtime~main.ba3a02e7.js.map",
     "static/css/2.72b17644.chunk.css": "/data_visualization_projects/static/css/2.72b17644.chunk.css",
-    "static/js/2.f8a2abcd.chunk.js": "/data_visualization_projects/static/js/2.f8a2abcd.chunk.js",
-    "static/js/2.f8a2abcd.chunk.js.map": "/data_visualization_projects/static/js/2.f8a2abcd.chunk.js.map",
+    "static/js/2.faa91a43.chunk.js": "/data_visualization_projects/static/js/2.faa91a43.chunk.js",
+    "static/js/2.faa91a43.chunk.js.map": "/data_visualization_projects/static/js/2.faa91a43.chunk.js.map",
     "index.html": "/data_visualization_projects/index.html",
-    "precache-manifest.812ec8e5505c9384c6e58a57b1db99a4.js": "/data_visualization_projects/precache-manifest.812ec8e5505c9384c6e58a57b1db99a4.js",
+    "precache-manifest.c54286435f797f0ff280828e49e14a6d.js": "/data_visualization_projects/precache-manifest.c54286435f797f0ff280828e49e14a6d.js",
     "service-worker.js": "/data_visualization_projects/service-worker.js",
     "static/css/2.72b17644.chunk.css.map": "/data_visualization_projects/static/css/2.72b17644.chunk.css.map",
-    "static/css/main.97388c04.chunk.css.map": "/data_visualization_projects/static/css/main.97388c04.chunk.css.map",
+    "static/css/main.8968565f.chunk.css.map": "/data_visualization_projects/static/css/main.8968565f.chunk.css.map",
     "static/media/all.css": "/data_visualization_projects/static/media/fa-solid-900.f6121be5.woff2"
   }
 }
