@@ -1,0 +1,40 @@
+body {
+  --header-height: 70px;
+  --main-color: rgba(43, 39, 39, 0.6);
+  padding-top: var(--header-height) !important;
+}
+
+header {
+  height: var(--header-height);
+  display: grid;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  background-color: var(--main-color);
+  z-index: 10;
+}
+
+.nav-bar > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  padding: 2px 1vw 0px 1vw;
+}
+
+.nav-link {
+  margin: 4px;
+  text-decoration: none;
+  color: #9a8f86;
+  font-weight: 600;
+}
+
+.nav-link:visited:hover,
+.nav-link:hover {
+  color: white;
+}
+
+.nav-link:visited {
+  color: black;
+  opacity: 1;
+}

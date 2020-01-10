@@ -1,7 +1,8 @@
 import React from 'react';
-import './App.css';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Header from '../Header/Header';
+import Home from '../Home/Home';
 import BarChart from '../BarChart/BarChart';
 import ScatterplotGraph from '../ScatterplotGraph/ScatterplotGraph';
 import HeatMap from '../HeatMap/HeatMap';
@@ -12,7 +13,9 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Header />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route path="/bar-chart" component={BarChart} />
           <Route path="/scatterplot-graph" component={ScatterplotGraph} />
           <Route path="/heat-map" component={HeatMap} />

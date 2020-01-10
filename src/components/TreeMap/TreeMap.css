@@ -5,9 +5,10 @@ body {
 }
 
 .treemap.main {
+  height: calc(100vh - 90px);
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: flex-start;
   padding: 10px;
 }
 

@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://saltowl.github.io/data_visualization_projects",
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.12.0",
     "d3": "^5.14.2",
     "gh-pages": "^2.1.1",
     "react": "^16.9.0",
